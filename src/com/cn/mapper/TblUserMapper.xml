@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.mapper.TblUserMapper">
+  <resultMap id="BaseResultMap" type="com.cn.entity.TblUser">
+    <id column="userid" property="userid" />
+    <result column="uname" property="uname" />
+    <result column="upwd" property="upwd" />
+    <result column="myname" property="myname" />
+    <result column="uaddress" property="uaddress" />
+    <result column="uemail" property="uemail" />
+    <result column="ugender" property="ugender" />
+    <result column="uphone" property="uphone" />
+  </resultMap>
+  <delete id="deleteByIdFun" parameterType="java.lang.Integer">
+    delete from userinfo
+    where userid = #{userid}
+  </delete>
+  <insert id="insert" parameterType="com.cn.entity.TblUser">
+    insert into userinfo (userid, uname, upwd, 
+      myname, uaddress, uemail, 
+      ugender, uphone)
+    values (#{userid}, #{uname}, #{upwd}, 
+      #{myname}, #{uaddress}, #{uemail}, 
+      #{ugender}, #{uphone})
+  </insert>
+  <update id="updateByIdFun" parameterType="com.cn.entity.TblUser">
+    update userinfo
+    set uname = #{uname},
+      upwd = #{upwd},
+      myname = #{myname},
+      uaddress = #{uaddress},
+      uemail = #{uemail},
+      ugender = #{ugender},
+      uphone = #{uphone}
+    where userid = #{userid}
+  </update>
+  <select id="selectByIdFun" parameterType="Integer" resultMap="BaseResultMap">
+    select *
+    from userinfo
+    where userid = #{userid}
+  </select>
+  <select id="selectByNameFun" parameterType="String" resultMap="BaseResultMap">
+    select *
+    from userinfo
+    where uname=#{uname}
+  </select>
+  <select id="selectAllFun" resultMap="BaseResultMap">
+    select * from userinfo
+  </select>
+</mapper>

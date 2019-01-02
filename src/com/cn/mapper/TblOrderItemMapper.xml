@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.mapper.TblOrderItemMapper">
+  <resultMap id="BaseResultMap" type="com.cn.entity.TblOrderItem">
+    <id column="oiid" property="oiid" />
+    <result column="oid" property="oid" />
+    <result column="gid" property="gid" />
+    <result column="oprice" property="oprice" />
+    <result column="orderamount" property="orderamount" />
+  </resultMap>
+  <delete id="delete" parameterType="Integer">
+    delete from orderiteminfo
+    where oiid = #{oiid}
+  </delete>
+  <insert id="insertFun" parameterType="com.cn.entity.TblOrderItem">
+    insert into orderiteminfo (oiid, oid, gid, 
+      oprice, orderamount)
+    values (#{oiid}, #{oid}, #{gid}, 
+      #{oprice}, #{orderamount})
+  </insert>
+  <update id="update" parameterType="com.cn.entity.TblOrderItem">
+    update orderiteminfo
+    set oid = #{oid},
+      gid = #{gid},
+      oprice = #{oprice},
+      orderamount = #{orderamount}
+    where oiid = #{oiid}
+  </update>
+  <select id="selectByIdFun" parameterType="Integer" resultMap="BaseResultMap">
+    select oiid, oid, gid, oprice, orderamount
+    from orderiteminfo
+    where oiid = #{oiid}
+  </select>
+  <select id="selectAllFun" resultMap="BaseResultMap">
+    select * from orderiteminfo
+  </select>
+</mapper>

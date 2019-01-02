@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.mapper.TblGoodsInfoMapper">
+  <resultMap id="BaseResultMap" type="com.cn.entity.TblGoodsInfo">
+    <id column="gid" property="gid" />
+    <result column="gname" property="gname" />
+    <result column="gprice" property="gprice" />
+    <result column="greprice" property="greprice" />
+    <result column="gimage" property="gimage" />
+    <result column="gintroduction" property="gintroduction" />
+    <result column="ghot" property="ghot" />
+    <result column="tsid" property="tsid" />
+  </resultMap>
+  <delete id="deleteByIdFun" parameterType="java.lang.Integer">
+    delete from goodsinfo
+    where gid = #{gid}
+  </delete>
+  <insert id="insert" parameterType="com.cn.entity.TblGoodsInfo">
+    insert into goodsinfo (gid, gname, gprice, 
+      greprice, gimage, gintroduction, 
+      ghot, tsid)
+    values (#{gid}, #{gname}, #{gprice}, 
+      #{greprice}, #{gimage}, #{gintroduction}, 
+      #{ghot}, #{tsid})
+  </insert>
+  <update id="updateByIdFun" parameterType="com.cn.entity.TblGoodsInfo">
+    update goodsinfo
+    set gname = #{gname},
+      gprice = #{gprice},
+      greprice = #{greprice},
+      gimage = #{gimage},
+      gintroduction = #{gintroduction},
+      ghot = #{ghot},
+      tsid = #{tsid}
+    where gid = #{gid}
+  </update>
+  <select id="selectByIdFun" parameterType="Integer" resultMap="BaseResultMap">
+    select gid, gname, gprice, greprice, gimage, gintroduction, ghot, tsid
+    from goodsinfo
+    where gid = #{gid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllFun" resultMap="BaseResultMap">
+    select * from goodsinfo
+  </select>
+</mapper>

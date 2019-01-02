@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.mapper.TblOrderInfoMapper">
+  <resultMap id="BaseResultMap" type="com.cn.entity.TblOrderInfo">
+    <id column="oid" jdbcType="INTEGER" property="oid" />
+    <result column="userid" property="userid" />
+    <result column="linkman" property="linkman" />
+    <result column="address" property="address" />
+    <result column="tel" property="tel" />
+    <result column="oprice" property="oprice" />
+    <result column="oretetime" property="oretetime" />
+    <result column="ostate" property="ostate" />
+  </resultMap>
+  <delete id="delete" parameterType="Integer">
+    delete from orderinfo
+    where oid = #{oid}
+  </delete>
+  <insert id="insertFun" parameterType="com.cn.entity.TblOrderInfo">
+    insert into orderinfo (oid, userid, linkman, 
+      address, tel, oprice, 
+      oretetime, ostate)
+    values (#{oid}, #{userid}, #{linkman}, 
+      #{address}, #{tel}, #{oprice}, 
+      #{oretetime}, #{ostate})
+  </insert>
+  <update id="update" parameterType="com.cn.entity.TblOrderInfo">
+    update orderinfo
+    set userid = #{userid},
+      linkman = #{linkman},
+      address = #{address},
+      tel = #{tel},
+      oprice = #{oprice},
+      oretetime = #{oretetime},
+      ostate = #{ostate}
+    where oid = #{oid}
+  </update>
+  <select id="selectByIdFun" parameterType="Integer" resultMap="BaseResultMap">
+    select oid, userid, linkman, address, tel, oprice, oretetime, ostate
+    from orderinfo
+    where oid = #{oid}
+  </select>
+  <select id="selectAllFun" resultMap="BaseResultMap">
+    select oid, userid, linkman, address, tel, oprice, oretetime, ostate
+    from orderinfo
+  </select>
+</mapper>

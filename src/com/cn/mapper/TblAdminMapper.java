@@ -1,14 +1,8 @@
 package com.cn.mapper;
 
 import com.cn.entity.TblAdmin;
-<<<<<<< HEAD
 
-public interface TblAdminMapper {
 
-	public TblAdmin selectByNameFun(String name);
-
-}
-=======
 import java.util.List;
 
 public interface TblAdminMapper {
@@ -24,4 +18,4 @@ public interface TblAdminMapper {
 
 	TblAdmin selectByNameFun(String name);
 }
->>>>>>> c515e93709d20a06643a7fff910beaab85f2e011
+

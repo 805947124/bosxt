@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cn.mapper.TblAdminMapper">
+	<select id="selectByNameFun" parameterType="String" resultType="com.cn.entity.TblAdmin">
+		select * from admininfo where aname=#{aname}
+	</select>
+	
+	<insert id="insertFun" parameterType="com.cn.entity.TblAdmin">
+		insert into tbl_users values(#{name},#{password},#{telephone},#{username},#{isadmin})
+	</insert>
+=======
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cn.mapper.TblAdminMapper">
   <resultMap id="BaseResultMap" type="TblAdmin">
@@ -40,4 +53,5 @@
     where aid = #{aid}
   </update>
   
+>>>>>>> c515e93709d20a06643a7fff910beaab85f2e011
 </mapper>

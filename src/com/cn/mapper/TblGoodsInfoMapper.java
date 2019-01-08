@@ -1,6 +1,8 @@
 package com.cn.mapper;
 
 import com.cn.entity.TblGoodsInfo;
+import com.cn.entity.TblGoodsQuery;
+
 import java.util.List;
 
 public interface TblGoodsInfoMapper {
@@ -13,4 +15,10 @@ public interface TblGoodsInfoMapper {
     List<TblGoodsInfo> selectAllFun();
 
     int updateByIdFun(TblGoodsInfo tblGoodsInfo);
+    
+    
+
+	int selectCountByConditionFun(TblGoodsQuery tblGoodsquery);
+
+	List<TblGoodsInfo> selectByConditionPageFun(TblGoodsQuery tblGoodsquery);
 }

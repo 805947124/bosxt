@@ -3,28 +3,21 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cn.mapper.TblAdminMapper">
-  <resultMap id="BaseResultMap" type="TblAdmin">
-    <id column="aid" jdbcType="INTEGER" property="aid" />
-    <result column="aname" property="aname" />
-    <result column="apwd" property="apwd" />
-    <result column="adname" property="adname" />
-    <result column="aphone" property="aphone" />
-  </resultMap>
   
   <insert id="insertFun" parameterType="com.cn.entity.TblAdmin">
-    insert into admininfo (aid, aname, apwd, adname, aphone)
-    values (#{aid}, #{aname}, #{apwd}, #{adname}, #{aphone})
+    insert into admininfo (aname, apwd, adname, aphone)
+    values (#{aname}, #{apwd}, #{adname}, #{aphone})
   </insert>
   
-  <select id="selectByIdFun" parameterType="Integer" resultMap="BaseResultMap">
+  <select id="selectByIdFun" parameterType="Integer">
     select aid, aname, apwd, adname, aphone
     from admininfo
     where aid = #{aid}
   </select>
-  <select id="selectByNameFun" parameterType="String" resultMap="BaseResultMap">
-    select *from admininfo where aname = #{aname}
+  <select id="selectByNameFun" parameterType="String" resultType="com.cn.entity.TblAdmin">
+    select * from admininfo where aname = #{aname}
   </select>
-  <select id="selectAllFun" resultMap="BaseResultMap">
+  <select id="selectAllFun" parameterType="com.cn.entity.TblAdmin">
     select aid, aname, apwd, adname, aphone
     from admininfo
   </select>
@@ -41,4 +34,18 @@
       aphone = #{aphone}
     where aid = #{aid}
   </update>
+  
+  
+  <select id="selectByConditionPageFun" parameterType="com.cn.entity.TblAdminQuery"
+  resultType="tblAdmin">
+		select top ${pageSize} * from admininfo
+		where aid not in (select top ${startNum} aid from admininfo order by aid asc )order by aid;
+
+	</select>
+	
+	<select id="selectCountByConditionFun" parameterType="com.cn.entity.TblAdminQuery"
+		resultType="int">
+		select count(*) from admininfo;
+		
+	</select>
 </mapper>

@@ -19,7 +19,7 @@ public class PageBean<T> {
 		}
 		//求总页数
 		totalPage = this.totalCount/limit;
-		if(this.totalCount/limit!=0)
+		if(this.totalCount%limit!=0)
 			totalPage ++;
 		
 		//当前页号

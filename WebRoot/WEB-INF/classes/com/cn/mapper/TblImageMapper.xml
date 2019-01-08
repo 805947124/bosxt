@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.mapper.TblImageMapper">
+
+
+	<select id="selectByConditionPageFun" parameterType="com.cn.entity.TblImageQuery"
+  resultType="tblImage">
+		select top ${pageSize} i.* 
+		from gimages i 
+		where  i.gimageid not in 
+		(select top ${startNum} gimageid from gimages order by gimageid asc)order by i.gimageid asc;
+
+	</select>
+	
+	<select id="selectCountByConditionFun" parameterType="com.cn.entity.TblImageQuery"
+		resultType="int">
+		select count(*) from gimages;
+		
+	</select>
+	
+	
+	
+	
+  <delete id="deleteByIdFun" parameterType="java.lang.Integer">
+    delete from goodsinfo
+    where gid = #{gid}
+  </delete>
+  <insert id="insert" parameterType="com.cn.entity.TblImage">
+    insert into goodsinfo (gid, gname, gprice, 
+      greprice, gimage, gintroduction, 
+      ghot, tsid)
+    values (#{gid}, #{gname}, #{gprice}, 
+      #{greprice}, #{gimage}, #{gintroduction}, 
+      #{ghot}, #{tsid})
+  </insert>
+  <update id="updateByIdFun" parameterType="com.cn.entity.TblImage">
+    update goodsinfo
+    set gname = #{gname},
+      gprice = #{gprice},
+      greprice = #{greprice},
+      gimage = #{gimage},
+      gintroduction = #{gintroduction},
+      ghot = #{ghot},
+      tsid = #{tsid}
+    where gid = #{gid}
+  </update>
+  <select id="selectByIdFun" parameterType="Integer">
+    select gid, gname, gprice, greprice, gimage, gintroduction, ghot, tsid
+    from goodsinfo
+    where gid = #{gid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllFun" parameterType="com.cn.entity.TblImage">
+    select * from goodsinfo
+  </select>
+</mapper>

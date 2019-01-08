@@ -1,6 +1,8 @@
 package com.cn.mapper;
 
 import com.cn.entity.TblUser;
+import com.cn.entity.TblUserQuery;
+
 import java.util.List;
 
 public interface TblUserMapper {
@@ -15,4 +17,10 @@ public interface TblUserMapper {
     int updateByIdFun(TblUser tblUser);
     
     TblUser selectByNameFun(String name);
+    
+    
+
+	int selectCountByConditionFun(TblUserQuery tblUserQuery);
+
+	List<TblUser> selectByConditionPageFun(TblUserQuery tblUserQuery);
 }

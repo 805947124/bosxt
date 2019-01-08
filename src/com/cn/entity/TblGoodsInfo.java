@@ -18,8 +18,29 @@ public class TblGoodsInfo {
     private Boolean ghot;
 
     private Integer tsid;
+    
+    
+    
+    private String tsname;
+    private String gimagepath;
 
-    public Integer getGid() {
+    public String getGimagepath() {
+		return gimagepath;
+	}
+
+	public void setGimagepath(String gimagepath) {
+		this.gimagepath = gimagepath;
+	}
+
+	public String getTsname() {
+		return tsname;
+	}
+
+	public void setTsname(String tsname) {
+		this.tsname = tsname;
+	}
+
+	public Integer getGid() {
         return gid;
     }
 
